@@ -44,8 +44,10 @@
             $name              = $_GET['name'];
             $mail              = $_GET['mail'];
             $age               = $_GET['age'];
+            $needed_mail_chars = ['@', '.'];
             
-            if (strlen($name) > 3 && strpos($mail, '@') !== false && strpos($mail, '.') !== false && is_numeric($age)){
+
+            if (strlen($name) > 3 && count(array_diff($needed_mail_chars, str_split($mail))) === 0 && is_numeric($age)){
                 echo 'Accesso riuscito';
             } else {
                 echo 'Accesso negato';
